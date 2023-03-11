@@ -14,7 +14,6 @@ const sequelize = new Sequelize(database, username, password, {
 try {
   sequelize.authenticate();
   console.log("we're connected");
-  await sequelize.close();
 } catch (err) {
   console.log("Error: ", err);
 }
