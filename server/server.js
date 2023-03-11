@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 
-//postgres username admin password
+//username: postgres  password: admin
 const app = express();
 
 let router = express.Router();
@@ -13,6 +13,6 @@ app.use(cors());
 
 app.use("/api", router);
 
-router.route("/getArtists")
+router.route("/getArtists");
 
 app.get("/api", (req, res) => {});
