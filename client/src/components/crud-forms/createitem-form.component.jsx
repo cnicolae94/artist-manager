@@ -24,10 +24,11 @@ const defaultPainting = {
 };
 
 const CreateItemForm = () => {
-  const [artist, setArtist] = useState(defaultArtist);
-  const [painting, setPainting] = useState(defaultPainting);
+  const [artist, setArtist] = useState({});
+  const [painting, setPainting] = useState({});
 
   const { artistName, artistYOB } = artist;
+  console.log(artist);
 
   const onChangeArtist = (event) => {
     const { name, value } = event.target;
@@ -40,24 +41,22 @@ const CreateItemForm = () => {
 
   const handleArtistSubmit = async (event) => {
     event.preventDefault();
+
     await fetch("http://localhost:8080/artists", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        artistName: artist.artistName,
-        artistDOB: artist.artistYOB,
+        artistName: artistName,
+        artistDOB: artistYOB,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
+      .then((response) => console.log(response.json()))
       .catch((error) => {
         console.error(error);
       });
-    //setArtist(defaultArtist);
+    setArtist(defaultArtist);
   };
 
   const handlePaintingSubmit = (event) => {
