@@ -1,10 +1,8 @@
 const { Sequelize } = require("sequelize");
 
-//=======Sequelize setup
-
 const database = "art";
-const username = "project";
-const password = "project"; //connects on psql command line, check later
+const username = "project"; //is owner on "art" database
+const password = "project";
 
 const sequelize = new Sequelize(database, username, password, {
   host: "localhost",
@@ -13,7 +11,7 @@ const sequelize = new Sequelize(database, username, password, {
 
 try {
   sequelize.authenticate();
-  console.log("we're connected");
+  console.log("We're connected");
 } catch (err) {
   console.log("Error: ", err);
 }
