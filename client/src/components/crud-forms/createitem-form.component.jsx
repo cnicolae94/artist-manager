@@ -11,6 +11,7 @@ import {
 } from "../../assets/headers";
 import FormInput from "./_form-input.component";
 import "./_form.styles.css";
+import axios from "axios";
 
 const defaultArtist = {
   artistName: "",
@@ -85,7 +86,7 @@ const CreateItemForm = () => {
         <button
           type="submit"
           className="btn btn-secondary submit"
-          onSubmit={handleArtistSubmit}
+          onSubmit={() => handleArtistSubmit()}
         >
           Submit an artist
         </button>
