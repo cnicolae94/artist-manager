@@ -11,7 +11,7 @@ import {
 } from "../../assets/headers";
 import FormInput from "./_form-input.component";
 import "./_form.styles.css";
-const axios = require("axios");
+import axios from "axios";
 
 const defaultArtist = {
   artistName: "",
@@ -47,16 +47,11 @@ const CreateItemForm = () => {
   };
 
   const handleArtistSubmit = async (event) => {
-    console.log("this is reachable");
-    const artistPayload = JSON.stringify(artist);
-
-    console.log(artistPayload);
-
     event.preventDefault();
 
     await axios
-      .post("http://localhost:8080/artists", artistPayload)
-      .then((response) => console.log(response.json()))
+      .post("http://localhost:8080/artists", artist)
+      .then((response) => console.log(response))
       .catch((error) => {
         console.error(error);
       });
