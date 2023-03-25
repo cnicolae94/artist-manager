@@ -5,13 +5,12 @@ import { useContext } from "react";
 const ToastMessage = (props) => {
   const { isSnbOpen, setIsSnbOpen } = useContext(SnackbarContext);
   const { msg } = props;
-  console.log(msg);
   return (
     <ToastContainer position="top-end">
       <Toast
         show={isSnbOpen}
         autohide="true"
-        delay="3000"
+        delay="4000"
         onClose={() => setIsSnbOpen(false)}
       >
         <Toast.Header>Alert!</Toast.Header>
