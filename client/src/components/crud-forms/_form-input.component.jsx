@@ -1,3 +1,5 @@
+import "./_form-input.styles.css";
+
 const FormInput = (props) => {
   const { type, displaytext, name, onChange } = props;
   const className = displaytext.replace(/\s+/g, "-").toLowerCase();

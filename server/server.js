@@ -30,6 +30,9 @@ const Artist = sequelize.define("artist", {
   artistName: {
     type: Sequelize.STRING,
     allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
   artistImg: {
     type: Sequelize.TEXT,
@@ -41,6 +44,9 @@ const Artist = sequelize.define("artist", {
   artistDOB: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      min: 1,
+    },
   },
 });
 

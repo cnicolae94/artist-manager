@@ -8,3 +8,4 @@ export const artistIdText = "Artist ID";
 export const createAnArtist = "Add an artist";
 export const createAPainting = "Add a painting";
 export const albumText = "Album";
+export const artistURLText = "Add an url with the picture";
