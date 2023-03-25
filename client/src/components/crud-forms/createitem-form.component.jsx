@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   artistIdText,
   artistNameText,
-  artistYOBText,
+  artistDOBText,
   createAnArtist,
   createAPainting,
   createText,
@@ -11,11 +11,11 @@ import {
 } from "../../assets/headers";
 import FormInput from "./_form-input.component";
 import "./_form.styles.css";
-import axios from "axios";
+const axios = require("axios");
 
 const defaultArtist = {
   artistName: "",
-  artistYOB: 0,
+  artistDOB: 0,
 };
 
 const defaultPainting = {
@@ -24,11 +24,17 @@ const defaultPainting = {
   artistID: 0,
 };
 
+const axiosConfig = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
 const CreateItemForm = () => {
   const [artist, setArtist] = useState({});
   const [painting, setPainting] = useState({});
 
-  const { artistName, artistYOB } = artist;
+  const { artistName, artistDOB } = artist;
   console.log(artist);
 
   const onChangeArtist = (event) => {
@@ -41,22 +47,20 @@ const CreateItemForm = () => {
   };
 
   const handleArtistSubmit = async (event) => {
+    console.log("this is reachable");
+    const artistPayload = JSON.stringify(artist);
+
+    console.log(artistPayload);
+
     event.preventDefault();
 
-    await fetch("http://localhost:8080/artists", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        artistName: artistName,
-        artistDOB: artistYOB,
-      }),
-    })
+    await axios
+      .post("http://localhost:8080/artists", artistPayload)
       .then((response) => console.log(response.json()))
       .catch((error) => {
         console.error(error);
       });
+
     setArtist(defaultArtist);
   };
 
@@ -67,7 +71,10 @@ const CreateItemForm = () => {
   return (
     <div className="create-item-wrapper">
       <h1 className="create-header">{createText}</h1>
-      <form className="artist-form-container input-group">
+      <form
+        className="artist-form-container input-group"
+        onSubmit={handleArtistSubmit}
+      >
         <h4>{createAnArtist}</h4>
         <FormInput
           required
@@ -79,14 +86,14 @@ const CreateItemForm = () => {
         <FormInput
           required
           type="text"
-          displaytext={artistYOBText}
-          name="artistYOB"
+          displaytext={artistDOBText}
+          name="artistDOB"
           onChange={onChangeArtist}
         />
         <button
           type="submit"
           className="btn btn-secondary submit"
-          onSubmit={() => handleArtistSubmit()}
+          // onSubmit={() => handleArtistSubmit()}
         >
           Submit an artist
         </button>

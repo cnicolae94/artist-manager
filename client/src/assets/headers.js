@@ -1,7 +1,7 @@
 export const headerText = "Classical Artists manager";
 export const createText = "Add a new artist or a painting";
 export const artistNameText = "Artist Name";
-export const artistYOBText = "Artist year of birth";
+export const artistDOBText = "Artist year of birth";
 export const paintingNameText = "Painting name/title";
 export const paintingImageUrlText = "Image url (optional)";
 export const artistIdText = "Artist ID";
