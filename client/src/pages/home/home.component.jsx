@@ -4,6 +4,7 @@ import ButtonContainer from "../../components/buttons-container/button-container
 import { Header } from "../../components/header/header.component";
 
 const Home = () => {
+  // TODO: CREATE HOMEPAGE WITH INSTRUCTIONS AND ADD
   return (
     <div className="home-container">
       <Link to="/">
@@ -11,6 +12,7 @@ const Home = () => {
       </Link>
       <ButtonContainer />
       <Outlet />
+      {/* homepage with instructions under Outlet idk why but it just works */}
     </div>
   );
 };

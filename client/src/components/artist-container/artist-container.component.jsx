@@ -7,18 +7,13 @@ import ArtistCard from "../artist-card/artist-card.component";
 import { ModalPopUpContext } from "../../contexts/modal-context";
 import AddPaintingModal from "../crud-forms/add-painting-modal.component";
 
-//displays all artists in an album type page
-
 export const AlbumContainer = () => {
-  const { isLoading, artistList } = useContext(ArtistContext); //artistList provides all artists to map through
+  const { isLoading, artistList } = useContext(ArtistContext);
   const { isModalOpen } = useContext(ModalPopUpContext);
-
-  console.log(isLoading); //if loading- show spinner
 
   return (
     <>
       {isModalOpen ? <AddPaintingModal /> : null}
-      <h1 className="album-text">{albumText}</h1>
       <div className="album-container">
         {isLoading ? (
           <LoadingSpinner />

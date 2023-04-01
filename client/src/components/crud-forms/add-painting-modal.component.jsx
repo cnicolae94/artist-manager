@@ -39,8 +39,6 @@ const AddPaintingModal = () => {
       artistId: currentArtist.artistId,
     };
 
-    console.log(payload);
-
     await axios
       .post("http://localhost:8080/paintings", payload)
       .then((response) => {
@@ -53,6 +51,7 @@ const AddPaintingModal = () => {
       });
     setPainting({});
     setCurrentArtist({});
+    setIsModalOpen(false);
   };
 
   // <h4>{createAPainting}</h4>

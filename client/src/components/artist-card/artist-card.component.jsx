@@ -3,23 +3,30 @@ import "./artist-card.styles.css";
 import { useContext } from "react";
 import { ModalPopUpContext } from "../../contexts/modal-context";
 import { CurrentArtistContext } from "../../contexts/currentartist-context";
+import { useNavigate } from "react-router-dom";
 
 const placeholderURL =
   "https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image-300x225.png";
-const placeholderName = "ArtistName";
-const placeholderDOB = "This artist was born in 1001";
+
+export const isUrlValid = (string) => {
+  try {
+    return Boolean(new URL(string));
+  } catch (e) {
+    return false;
+  }
+};
 
 const ArtistCard = ({ artist }) => {
   const { setIsModalOpen } = useContext(ModalPopUpContext);
   const { currentArtist, setCurrentArtist } = useContext(CurrentArtistContext);
   const { artistDOB, artistId, artistImg, artistName } = artist;
 
-  //   console.log(artist);
+  const navigate = useNavigate();
 
   const handleArtistAdd = () => {
-    console.log("This helps you update the artist");
     setCurrentArtist(artist);
     setIsModalOpen(true);
+    window.alert("Painting added");
   };
 
   const handleArtistUpdate = () => {
@@ -30,18 +37,25 @@ const ArtistCard = ({ artist }) => {
     console.log("This is the artist ID", artistId);
   };
 
+  const handleArtistViewPaintings = () => {
+    navigate(`${artistId}`);
+  };
+
   return (
-    <Card key={artistId} style={{ width: "30%" }}>
+    <Card key={artistId}>
       <Card.Img
         className="m-auto align-self-center"
         variant="top"
-        src={artistImg !== placeholderURL ? artistImg : placeholderURL}
-        style={{ maxHeight: "300px", objectFit: "cover" }}
+        src={isUrlValid(artistImg) ? artistImg : placeholderURL}
+        style={{ maxHeight: "500px", objectFit: "cover" }}
       />
       <Card.Body>
         <Card.Title>{artistName}</Card.Title>
         <Card.Text>Born: {artistDOB}</Card.Text>
         <ButtonGroup size="sm" className="mb-2 d-flex justify-content-between">
+          <Button variant="primary" onClick={handleArtistViewPaintings}>
+            View paintings
+          </Button>
           <Button variant="primary" onClick={handleArtistAdd}>
             Add painting
           </Button>

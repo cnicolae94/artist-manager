@@ -37,9 +37,6 @@ const Artist = sequelize.define("artist", {
   artistImg: {
     type: Sequelize.TEXT,
     allowNull: true,
-    validate: {
-      isUrl: true,
-    },
   },
   artistDOB: {
     type: Sequelize.INTEGER,
@@ -63,9 +60,6 @@ const Painting = sequelize.define("painting", {
   paintingURL: {
     type: Sequelize.TEXT,
     allowNull: true,
-    validate: {
-      isURL: true,
-    },
   },
   paintingYear: {
     type: Sequelize.TEXT,
@@ -83,8 +77,10 @@ const Painting = sequelize.define("painting", {
   },
 });
 
-Artist.hasMany(Painting, { as: "paintings" });
+Artist.hasMany(Painting, { foreignKey: "artistId" });
 Painting.belongsTo(Artist, { foreignKey: "artistId" });
+
+sequelize.sync();
 
 //=======Artist CRUD operations
 
