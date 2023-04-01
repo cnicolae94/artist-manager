@@ -56,11 +56,18 @@ const Painting = sequelize.define("painting", {
     primaryKey: true,
     autoIncrement: true,
   },
-  title: {
+  paintingTitle: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  imageUrl: {
+  paintingURL: {
+    type: Sequelize.TEXT,
+    allowNull: true,
+    validate: {
+      isURL: true,
+    },
+  },
+  paintingYear: {
     type: Sequelize.TEXT,
     allowNull: true,
     validate: {
@@ -193,9 +200,10 @@ app.get("/paintings/:aid", async (req, res) => {
 
 //add a painting
 app.post("/paintings", async (req, res) => {
+  console.log(req.body);
   try {
     await Painting.create(req.body);
-    res.status(201).json({ message: "Painting created." }); //handle empty lists in fetch calls
+    res.status(201).json({ message: "Painting created." });
   } catch (err) {
     console.warn(err);
     res.status(500).json({ message: `Error occured: ${err}.` });

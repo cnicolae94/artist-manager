@@ -21,6 +21,8 @@ export const ArtistProvider = ({ children }) => {
     return fetchArtists();
   });
 
+  console.log(artistList);
+
   return (
     <ArtistContext.Provider value={{ isLoading, artistList }}>
       {children}

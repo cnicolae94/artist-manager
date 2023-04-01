@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastProvider } from "./contexts/toast-context";
 import { ArtistProvider } from "./contexts/artists-context";
 import { ModalPopUpProvider } from "./contexts/modal-context";
+import { CurrentArtistProvider } from "./contexts/currentartist-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,9 +15,11 @@ root.render(
     <BrowserRouter>
       <ToastProvider>
         <ArtistProvider>
-          <ModalPopUpProvider>
-            <App />
-          </ModalPopUpProvider>
+          <CurrentArtistProvider>
+            <ModalPopUpProvider>
+              <App />
+            </ModalPopUpProvider>
+          </CurrentArtistProvider>
         </ArtistProvider>
       </ToastProvider>
     </BrowserRouter>

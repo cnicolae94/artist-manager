@@ -1,0 +1,19 @@
+.painting-modal-header {
+  font-weight: 700;
+  font-size: larger;
+}
+
+.modal-dialog {
+  margin: auto;
+  margin-top: 25%;
+  max-width: fit-content;
+}
+
+.painting-modal-body {
+  margin: auto;
+}
+
+.painting-modal-footer {
+  padding: 0 !important;
+  margin: 5px;
+}

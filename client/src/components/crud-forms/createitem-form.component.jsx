@@ -23,6 +23,8 @@ const CreateItemForm = () => {
     setArtist({ ...artist, [name]: value });
   };
 
+  console.log(artist);
+
   const handleArtistSubmit = async (event) => {
     await axios
       .post("http://localhost:8080/artists", artist)
@@ -33,7 +35,7 @@ const CreateItemForm = () => {
       .catch((error) => {
         setMessage(error.message + " CODE: " + error.code);
         setIsSnbOpen(true);
-      }); 
+      });
     event.target.reset();
     setArtist({});
   };
@@ -43,7 +45,6 @@ const CreateItemForm = () => {
       <>
         <h1 className="create-header">{createText}</h1>
         <form className="artist-form-container input-group">
-          <h4>{createAnArtist}</h4>
           <FormInput
             required
             type="text"
@@ -73,7 +74,6 @@ const CreateItemForm = () => {
             Submit an artist
           </button>
         </form>
-
         <ToastMessage msg={message} />
       </>
     </div>

@@ -12,14 +12,6 @@ const operations = [
   },
   {
     id: 3,
-    title: "Update",
-  },
-  {
-    id: 4,
-    title: "Delete",
-  },
-  {
-    id: 5,
     title: "Search_by_ID",
   },
 ];
