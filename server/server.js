@@ -59,9 +59,6 @@ const Painting = sequelize.define("painting", {
   paintingTitle: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      isAlphanumeric: true,
-    },
   },
   paintingURL: {
     type: Sequelize.TEXT,
