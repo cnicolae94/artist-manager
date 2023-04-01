@@ -59,6 +59,9 @@ const Painting = sequelize.define("painting", {
   paintingTitle: {
     type: Sequelize.STRING,
     allowNull: false,
+    validate: {
+      isAlphanumeric: true,
+    },
   },
   paintingURL: {
     type: Sequelize.TEXT,
@@ -69,9 +72,9 @@ const Painting = sequelize.define("painting", {
   },
   paintingYear: {
     type: Sequelize.TEXT,
-    allowNull: true,
+    allowNull: false,
     validate: {
-      isURL: true,
+      isNumeric: true,
     },
   },
   artistId: {
@@ -83,8 +86,8 @@ const Painting = sequelize.define("painting", {
   },
 });
 
-Artist.hasMany(Painting, { as: "Artist", foreignKey: "artistId" });
-Painting.belongsTo(Artist, { as: "Artist", foreignKey: "artistId" });
+Artist.hasMany(Painting, { as: "paintings" });
+Painting.belongsTo(Artist, { foreignKey: "artistId" });
 
 //=======Artist CRUD operations
 
@@ -103,7 +106,7 @@ app.get("/sync", async (req, res) => {
 app.get("/artists", async (req, res) => {
   try {
     const artists = await Artist.findAll();
-    res.status(200).json(artists); //handle empty lists in fetch calls
+    res.status(200).json(artists);
   } catch (err) {
     console.warn(err);
     res.status(500).json({ message: `Error occured: ${err}.` });
@@ -114,7 +117,7 @@ app.get("/artists", async (req, res) => {
 app.post("/artists", async (req, res) => {
   try {
     await Artist.create(req.body);
-    res.status(201).json({ message: "Artist created." }); //handle empty lists in fetch calls
+    res.status(201).json({ message: "Artist created." });
   } catch (err) {
     console.warn(err);
     res.status(500).json({ message: `Error occured: ${err}.` });
@@ -200,7 +203,7 @@ app.get("/paintings/:aid", async (req, res) => {
 
 //add a painting
 app.post("/paintings", async (req, res) => {
-  console.log(req.body);
+  console.log(req);
   try {
     await Painting.create(req.body);
     res.status(201).json({ message: "Painting created." });

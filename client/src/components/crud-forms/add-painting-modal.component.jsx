@@ -22,7 +22,7 @@ const AddPaintingModal = () => {
   const { isModalOpen, setIsModalOpen } = useContext(ModalPopUpContext);
   const { currentArtist, setCurrentArtist } = useContext(CurrentArtistContext);
 
-  const { paintingId, paintingTitle, paintingURL, paintingYear } = painting;
+  const { paintingTitle, paintingURL, paintingYear } = painting;
   console.log(painting);
 
   const onChangePainting = (event) => {
@@ -31,8 +31,8 @@ const AddPaintingModal = () => {
   };
 
   const handlePaintingSubmit = async (event) => {
+    console.log(currentArtist);
     const payload = {
-      paintingId: paintingId,
       paintingTitle: paintingTitle,
       paintingURL: paintingURL,
       paintingYear: paintingYear,
