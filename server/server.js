@@ -81,7 +81,7 @@ Painting.belongsTo(Artist, { as: "Artist", foreignKey: "artistId" });
 
 //=======Artist CRUD operations
 
-//sync endpoint
+//sync endpoint - not implemented in front end
 app.get("/sync", async (req, res) => {
   try {
     await sequelize.sync({ force: true });

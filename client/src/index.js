@@ -4,15 +4,21 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { SnackbarProvider } from "./contexts/snackbar-context";
+import { ToastProvider } from "./contexts/toast-context";
+import { ArtistProvider } from "./contexts/artists-context";
+import { ModalPopUpProvider } from "./contexts/modal-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SnackbarProvider>
-        <App />
-      </SnackbarProvider>
+      <ToastProvider>
+        <ArtistProvider>
+          <ModalPopUpProvider>
+            <App />
+          </ModalPopUpProvider>
+        </ArtistProvider>
+      </ToastProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

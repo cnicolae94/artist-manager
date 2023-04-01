@@ -9,14 +9,14 @@ import {
 import FormInput from "./_form-input.component";
 import "./_form.styles.css";
 import axios from "axios";
-import { SnackbarContext } from "../../contexts/snackbar-context";
+import { ToastContext } from "../../contexts/toast-context";
 import ToastMessage from "../toast/toast.component";
 
 const CreateItemForm = () => {
   const [artist, setArtist] = useState({});
   const [message, setMessage] = useState("");
 
-  const { setIsSnbOpen } = useContext(SnackbarContext);
+  const { setIsSnbOpen } = useContext(ToastContext);
 
   const onChangeArtist = (event) => {
     const { name, value } = event.target;
@@ -33,7 +33,8 @@ const CreateItemForm = () => {
       .catch((error) => {
         setMessage(error.message + " CODE: " + error.code);
         setIsSnbOpen(true);
-      });
+      }); 
+    event.target.reset();
     setArtist({});
   };
 

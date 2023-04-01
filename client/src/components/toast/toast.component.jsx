@@ -1,9 +1,9 @@
 import { Toast, ToastContainer } from "react-bootstrap";
-import { SnackbarContext } from "../../contexts/snackbar-context";
+import { ToastContext } from "../../contexts/toast-context";
 import { useContext } from "react";
 
 const ToastMessage = (props) => {
-  const { isSnbOpen, setIsSnbOpen } = useContext(SnackbarContext);
+  const { isSnbOpen, setIsSnbOpen } = useContext(ToastContext);
   const { msg } = props;
   return (
     <ToastContainer position="top-end">

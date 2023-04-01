@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { albumText } from "../../assets/headers";
+import { ArtistContext } from "../../contexts/artists-context";
+import { LoadingSpinner } from "../spinner/spinner.component";
 
 //displays all artists in an album type page
 
 export const AlbumContainer = () => {
-  const [artists, setArtists] = useState([]);
+  const { isLoading, artistList } = useContext(ArtistContext);
 
-  async function getArtists() {
-    try {
-      const response = await fetch("http://localhost:8080/artists");
-      const data = await response.json();
-      setArtists(data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  console.log(isLoading); //if loading- show spinner
 
-  useEffect(() => {
-    getArtists();
-  }, []);
-
-  console.log(artists); //works
-
-  return <h1>{albumText}</h1>;
+  return (
+    <div className="album-container">
+      <h1>{albumText}</h1>
+      <>{isLoading ? <LoadingSpinner /> : null}</>
+    </div>
+  );
 };
