@@ -10,6 +10,8 @@ const database = "art";
 const username = "project";
 const password = "project";
 
+const Op = Sequelize.Op;
+
 const sequelize = new Sequelize(database, username, password, {
   host: "localhost",
   dialect: "postgres",
@@ -166,6 +168,23 @@ app.delete("/artists/:aid", async (req, res) => {
   }
 });
 
+//search for an artist by name
+app.get("/search-artists", async (req, res) => {
+  try {
+    const artists = await Artist.findAll({
+      where: {
+        artistName: {
+          [Op.iLike]: `%${req.query.name}%`,
+        },
+      },
+    });
+    res.status(200).json(artists);
+  } catch (err) {
+    console.warn(err);
+    res.status(500).json({ message: `Error occured: ${err}.` });
+  }
+});
+
 //=======Painting CRUD operations
 
 //get all paintings
@@ -249,6 +268,23 @@ app.delete("/paintings/:pid", async (req, res) => {
     } else {
       res.status(404).json({ message: "Painting not found." });
     }
+  } catch (err) {
+    console.warn(err);
+    res.status(500).json({ message: `Error occured: ${err}.` });
+  }
+});
+
+//search for a painting by name
+app.get("/search-paintings", async (req, res) => {
+  try {
+    const paintings = await Painting.findAll({
+      where: {
+        paintingTitle: {
+          [Op.iLike]: `%${req.query.name}%`,
+        },
+      },
+    });
+    res.status(200).json(paintings);
   } catch (err) {
     console.warn(err);
     res.status(500).json({ message: `Error occured: ${err}.` });

@@ -15,7 +15,6 @@ export const AlbumContainer = () => {
   const { isViewUpdateOpen } = useContext(ViewUpdateContext);
   const { currentArtist } = useContext(CurrentArtistContext);
 
-  console.log(isViewUpdateOpen);
   return (
     <>
       {isModalOpen ? <AddPaintingModal /> : null}

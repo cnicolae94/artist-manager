@@ -14,9 +14,7 @@ const placeholderURL =
 const PaintingCard = ({ painting }) => {
   const [message, setMessage] = useState("");
   const { setIsSnbOpen } = useContext(ToastContext);
-  const { currentPainting, setCurrentPainting } = useContext(
-    CurrentPaintingContext
-  );
+  const { setCurrentPainting } = useContext(CurrentPaintingContext);
   const { setIsViewUpdateOpen } = useContext(ViewUpdateContext);
   const { paintingId, paintingTitle, paintingURL, paintingYear } = painting;
 

@@ -15,7 +15,7 @@ function App() {
         <Route path="album" element={<AlbumContainer />} />
         <Route path="album/:id" element={<PaintingAlbum />} />
         <Route path="create" element={<CreateItemForm />} />
-        <Route path="search_by_id" element={<SearchItemForm />} />
+        <Route path="search" element={<SearchItemForm />} />
       </Route>
     </Routes>
   );
