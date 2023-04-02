@@ -5,26 +5,34 @@ import { useContext, useState } from "react";
 import { ToastContext } from "../../contexts/toast-context";
 import axios from "axios";
 import ToastMessage from "../toast/toast.component";
+import { CurrentPaintingContext } from "../../contexts/currentpainting-context";
+import { ViewUpdateContext } from "../../contexts/view-update-context";
 
 const placeholderURL =
   "https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image-300x225.png";
 
 const PaintingCard = ({ painting }) => {
-  const { paintingId, paintingTitle, paintingURL, paintingYear } = painting;
   const [message, setMessage] = useState("");
   const { setIsSnbOpen } = useContext(ToastContext);
-  //   setMessage(response.data.message);
-  //   setIsSnbOpen(true);
+  const { currentPainting, setCurrentPainting } = useContext(
+    CurrentPaintingContext
+  );
+  const { setIsViewUpdateOpen } = useContext(ViewUpdateContext);
+  const { paintingId, paintingTitle, paintingURL, paintingYear } = painting;
+
   const handleViewPainting = () => {
-    //open modal and show picture with text on top
     console.log("View painting");
   };
 
-  const handlePaintingUpdate = () => {};
+  const handlePaintingUpdate = () => {
+    window.scrollTo(0, 0);
+    setCurrentPainting(painting);
+    setIsViewUpdateOpen(true);
+  };
 
   const handlePaintingDelete = () => {
     let answer = window.confirm(
-      "Are you sure you want to delete the selected element?"
+      "Are you sure you want to delete the selected painting? This cannot be undone.?"
     );
     if (answer) {
       const deleteURL = `http://localhost:8080/paintings/${paintingId}`;
@@ -50,7 +58,7 @@ const PaintingCard = ({ painting }) => {
           className="m-auto align-self-center"
           variant="top"
           src={isUrlValid(paintingURL) ? paintingURL : placeholderURL}
-          style={{ maxHeight: "500px", objectFit: "cover" }}
+          style={{ height: "500px", objectFit: "cover" }}
         />
         <Card.Body>
           <Card.Title>{paintingTitle}</Card.Title>

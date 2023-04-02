@@ -12,7 +12,7 @@ const operations = [
   },
   {
     id: 3,
-    title: "Search_by_ID",
+    title: "Search",
   },
 ];
 

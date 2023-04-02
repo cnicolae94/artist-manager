@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { ModalPopUpContext } from "../../contexts/modal-context";
 import { CurrentArtistContext } from "../../contexts/currentartist-context";
 import { useNavigate } from "react-router-dom";
+import { ViewUpdateContext } from "../../contexts/view-update-context";
+import axios from "axios";
 
 const placeholderURL =
   "https://www.grouphealth.ca/wp-content/uploads/2018/05/placeholder-image-300x225.png";
@@ -19,6 +21,8 @@ export const isUrlValid = (string) => {
 const ArtistCard = ({ artist }) => {
   const { setIsModalOpen } = useContext(ModalPopUpContext);
   const { currentArtist, setCurrentArtist } = useContext(CurrentArtistContext);
+  const { isViewUpdateOpen, setIsViewUpdateOpen } =
+    useContext(ViewUpdateContext);
   const { artistDOB, artistId, artistImg, artistName } = artist;
 
   const navigate = useNavigate();
@@ -26,15 +30,29 @@ const ArtistCard = ({ artist }) => {
   const handleArtistAdd = () => {
     setCurrentArtist(artist);
     setIsModalOpen(true);
-    window.alert("Painting added");
   };
 
   const handleArtistUpdate = () => {
-    console.log("This is the update button");
+    window.scrollTo(0, 0);
+    setCurrentArtist(artist);
+    setIsViewUpdateOpen((current) => !current);
   };
 
   const handleArtistDelete = () => {
-    console.log("This is the artist ID", artistId);
+    let answer = window.confirm(
+      "Are you sure you want to delete the selected artist? This cannot be undone."
+    );
+    if (answer) {
+      const deleteURL = `http://localhost:8080/artists/${artistId}`;
+      axios
+        .delete(deleteURL)
+        .then((response) => {
+          window.alert(response.data.message);
+        })
+        .catch((error) => {
+          window.alert(error.message + " CODE: " + error.code);
+        });
+    } else return;
   };
 
   const handleArtistViewPaintings = () => {
@@ -47,7 +65,7 @@ const ArtistCard = ({ artist }) => {
         className="m-auto align-self-center"
         variant="top"
         src={isUrlValid(artistImg) ? artistImg : placeholderURL}
-        style={{ maxHeight: "500px", objectFit: "cover" }}
+        style={{ height: "350px", objectFit: "cover" }}
       />
       <Card.Body>
         <Card.Title>{artistName}</Card.Title>

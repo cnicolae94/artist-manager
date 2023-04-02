@@ -227,7 +227,7 @@ app.put("/paintings/:pid", async (req, res) => {
     const painting = await Painting.findByPk(req.params.pid);
     if (painting) {
       await painting.update(req.body, {
-        fields: ["artistName", "artistDOB", "artistImg"], //CHANGE HERE
+        fields: ["paintingTitle", "paintingURL", "paintingYear"], //CHANGE HERE
       });
       res.status(202).json({ message: "Painting updated succesfully." });
     } else {

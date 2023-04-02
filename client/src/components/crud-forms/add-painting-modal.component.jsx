@@ -18,12 +18,11 @@ import { ToastContext } from "../../contexts/toast-context";
 const AddPaintingModal = () => {
   const [painting, setPainting] = useState({});
   const [message, setMessage] = useState("");
-  const { isSnbOpen, setIsSnbOpen } = useContext(ToastContext);
+  const { setIsSnbOpen } = useContext(ToastContext);
   const { isModalOpen, setIsModalOpen } = useContext(ModalPopUpContext);
   const { currentArtist, setCurrentArtist } = useContext(CurrentArtistContext);
 
   const { paintingTitle, paintingURL, paintingYear } = painting;
-  console.log(painting);
 
   const onChangePainting = (event) => {
     const { name, value } = event.target;
@@ -31,7 +30,6 @@ const AddPaintingModal = () => {
   };
 
   const handlePaintingSubmit = async (event) => {
-    console.log(currentArtist);
     const payload = {
       paintingTitle: paintingTitle,
       paintingURL: paintingURL,
@@ -51,10 +49,9 @@ const AddPaintingModal = () => {
       });
     setPainting({});
     setCurrentArtist({});
+    window.alert("Painting added");
     setIsModalOpen(false);
   };
-
-  // <h4>{createAPainting}</h4>
 
   const handleCloseModal = () => {
     setIsModalOpen((current) => !current);

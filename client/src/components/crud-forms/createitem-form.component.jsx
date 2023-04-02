@@ -33,7 +33,6 @@ const CreateItemForm = () => {
         setMessage(error.message + " CODE: " + error.code);
         setIsSnbOpen(true);
       });
-    event.target.reset();
     window.alert("The artist has been registered.");
     window.reload();
     setArtist({});

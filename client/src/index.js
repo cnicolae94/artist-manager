@@ -9,21 +9,27 @@ import { ArtistProvider } from "./contexts/artists-context";
 import { ModalPopUpProvider } from "./contexts/modal-context";
 import { CurrentArtistProvider } from "./contexts/currentartist-context";
 import { PaintingsProvider } from "./contexts/paintings-context";
+import { ViewUpdateProvider } from "./contexts/view-update-context";
+import { CurrentPaintingProvider } from "./contexts/currentpainting-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ToastProvider>
-        <ArtistProvider>
-          <PaintingsProvider>
-            <CurrentArtistProvider>
-              <ModalPopUpProvider>
-                <App />
-              </ModalPopUpProvider>
-            </CurrentArtistProvider>
-          </PaintingsProvider>
-        </ArtistProvider>
+        <ViewUpdateProvider>
+          <ArtistProvider>
+            <PaintingsProvider>
+              <CurrentPaintingProvider>
+                <CurrentArtistProvider>
+                  <ModalPopUpProvider>
+                    <App />
+                  </ModalPopUpProvider>
+                </CurrentArtistProvider>
+              </CurrentPaintingProvider>
+            </PaintingsProvider>
+          </ArtistProvider>
+        </ViewUpdateProvider>
       </ToastProvider>
     </BrowserRouter>
   </React.StrictMode>

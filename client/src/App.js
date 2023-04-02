@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useEffect } from "react";
 import Home from "./pages/home/home.component";
 import { Route, Routes } from "react-router-dom";
 import CreateItemForm from "./components/crud-forms/createitem-form.component";
@@ -12,7 +11,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />}>
-        //put a fucking text down Bitter
+        {/* //put a fucking text down Bitter */}
         <Route path="album" element={<AlbumContainer />} />
         <Route path="album/:id" element={<PaintingAlbum />} />
         <Route path="create" element={<CreateItemForm />} />
