@@ -72,16 +72,16 @@ const ArtistCard = ({ artist }) => {
         <Card.Title>{artistName}</Card.Title>
         <Card.Text>Born: {artistDOB}</Card.Text>
         <ButtonGroup size="sm" className="mb-2 d-flex justify-content-between">
-          <Button variant="primary" onClick={handleArtistViewPaintings}>
+          <Button className="artist-card-btn" variant="primary" onClick={handleArtistViewPaintings}>
             View paintings
           </Button>
-          <Button variant="primary" onClick={handleArtistAdd}>
+          <Button className="artist-card-btn" variant="primary" onClick={handleArtistAdd}>
             Add painting
           </Button>
-          <Button variant="primary" onClick={handleArtistUpdate}>
+          <Button className="artist-card-btn" variant="primary" onClick={handleArtistUpdate}>
             Update
           </Button>
-          <Button variant="primary" onClick={handleArtistDelete}>
+          <Button className="artist-card-btn" variant="primary" onClick={handleArtistDelete}>
             Delete
           </Button>
         </ButtonGroup>

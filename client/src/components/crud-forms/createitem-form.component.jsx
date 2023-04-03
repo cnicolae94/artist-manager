@@ -80,7 +80,7 @@ const CreateItemForm = () => {
           </Form.Group>
         </Form>
         <Button
-          className="btn btn-primary submit"
+          className="btn btn-primary submit artist-btn-submit"
           onClick={() => handleArtistSubmit()}
         >
           Submit artist

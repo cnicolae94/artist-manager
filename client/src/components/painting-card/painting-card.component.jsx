@@ -19,7 +19,7 @@ const PaintingCard = ({ painting }) => {
   const { paintingId, paintingTitle, paintingURL, paintingYear } = painting;
 
   const handleViewPainting = () => {
-    console.log("View painting");
+    window.open(paintingURL);
   };
 
   const handlePaintingUpdate = () => {
@@ -50,7 +50,6 @@ const PaintingCard = ({ painting }) => {
 
   return (
     <>
-      <ToastMessage message={message} />
       <Card>
         <Card.Img
           className="m-auto align-self-center"
@@ -63,19 +62,32 @@ const PaintingCard = ({ painting }) => {
           <Card.Text>This painting was made in year {paintingYear}</Card.Text>
         </Card.Body>
         <ButtonGroup size="sm" className="mb-2 d-flex justify-content-between">
-          <Button variant="primary" onClick={handleViewPainting}>
+          <Button
+            variant="primary"
+            className="painting-card-btn"
+            onClick={handleViewPainting}
+          >
             View painting
           </Button>
-          <Button variant="primary" onClick={handlePaintingUpdate}>
+          <Button
+            variant="primary"
+            className="painting-card-btn"
+            onClick={handlePaintingUpdate}
+          >
             Update
           </Button>
-          <Button variant="primary" onClick={handlePaintingDelete}>
+          <Button
+            variant="primary"
+            className="painting-card-btn"
+            onClick={handlePaintingDelete}
+          >
             Delete
           </Button>
         </ButtonGroup>
       </Card>
+      <ToastMessage message={message} />
     </>
   );
-}; //will take painting as a param
+};
 
 export default PaintingCard;

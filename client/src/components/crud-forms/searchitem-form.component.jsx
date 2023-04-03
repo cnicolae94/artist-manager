@@ -72,7 +72,7 @@ const SearchItemForm = () => {
     <>
       <Card>
         <Card.Header>Search an artist or painting by name</Card.Header>
-        <Card.Body>
+        <Card.Body className="homepage-card-description">
           <Form>
             <div className="row">
               <Form.Group className="artist-label col">
@@ -116,7 +116,9 @@ const SearchItemForm = () => {
           ))
         : null}
       {paintings
-        ? paintings.map((painting) => <PaintingCard painting={painting} />)
+        ? paintings.map((painting) => (
+            <PaintingCard key={painting.paintingId} painting={painting} />
+          ))
         : null}
       {isLoading ? <Spinner /> : null}
     </>

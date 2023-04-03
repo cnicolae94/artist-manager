@@ -15,6 +15,10 @@
   margin-top: 10px !important;
 }
 
+.artist-btn-submit {
+  margin: 0px;
+}
+
 .form-input-label {
   outline: none;
   font-size: 16px;
@@ -34,4 +38,9 @@
 .btn-search-2 {
   margin: 10px !important;
   max-width: 200px;
+}
+
+.homepage-card-text {
+  text-align: center;
+  margin: -5px;
 }

@@ -140,10 +140,18 @@ const UpdateViewForm = ({ item }) => {
             </Form.Group>
           </Form>
           <ButtonGroup>
-            <Button type="button" onClick={handleSubmit}>
+            <Button
+              type="button"
+              className="view-update-btn"
+              onClick={handleSubmit}
+            >
               Submit
             </Button>
-            <Button variant="secondary" onClick={handleCloseComp}>
+            <Button
+              variant="secondary"
+              className="view-update-btn"
+              onClick={handleCloseComp}
+            >
               Cancel
             </Button>
           </ButtonGroup>
