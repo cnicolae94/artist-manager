@@ -11,6 +11,7 @@ const UpdateViewForm = ({ item }) => {
   const [message, setMessage] = useState("");
   const { setIsSnbOpen } = useContext(ToastContext);
   const { setIsViewUpdateOpen } = useContext(ViewUpdateContext);
+  const currentLocation = window.location;
   const headerText = "View item: ";
 
   const onChangeItem = (event) => {
@@ -40,6 +41,7 @@ const UpdateViewForm = ({ item }) => {
           console.log(message);
           setIsSnbOpen(true);
           window.alert("Artist updated");
+          currentLocation.reload();
           setIsViewUpdateOpen(false);
         })
         .catch((err) => {
@@ -62,6 +64,7 @@ const UpdateViewForm = ({ item }) => {
           setMessage(response.data.message);
           setIsSnbOpen(true);
           window.alert("Painting updated");
+          currentLocation.reload();
           setIsViewUpdateOpen(false);
         })
         .catch((err) => {

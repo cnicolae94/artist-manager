@@ -10,10 +10,12 @@ import FormInput from "./_form-input.component";
 import axios from "axios";
 import { ToastContext } from "../../contexts/toast-context";
 import ToastMessage from "../toast/toast.component";
+import { Button, Card, Form } from "react-bootstrap";
 
 const CreateItemForm = () => {
   const [artist, setArtist] = useState({});
   const [message, setMessage] = useState("");
+  const currentLocation = window.location;
 
   const { setIsSnbOpen } = useContext(ToastContext);
 
@@ -34,49 +36,57 @@ const CreateItemForm = () => {
         setIsSnbOpen(true);
       });
     window.alert("The artist has been registered.");
-    window.reload();
+    currentLocation.reload();
     setArtist({});
   };
 
   return (
-    <>
-      <h1 className="create-header">{createText}</h1>
-      <div className="create-item-wrapper">
-        <>
-          <form className="input-group">
-            <FormInput
-              required
-              type="text"
-              displaytext={artistNameText}
-              name="artistName"
-              onChange={onChangeArtist}
-            />
-            <FormInput
-              required
-              type="number"
-              displaytext={artistDOBText}
-              name="artistDOB"
-              onChange={onChangeArtist}
-            />
-            <FormInput
+    <Card>
+      <ToastMessage msg={message} />
+      <Card.Header>{createText}</Card.Header>
+      <Card.Body>
+        <Form>
+          <div className="row">
+            <Form.Group className="artist-name-create-input col">
+              <Form.Label>Artist Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder={artistNameText}
+                name="artistName"
+                onChange={onChangeArtist}
+              />
+            </Form.Group>
+            <Form.Group className="artist-name-create-input col">
+              <Form.Label>Artist Name</Form.Label>
+              <Form.Control
+                required
+                type="number"
+                placeholder={artistDOBText}
+                name="artistDOB"
+                onChange={onChangeArtist}
+              />
+            </Form.Group>
+          </div>
+          <Form.Group className="artist-name-create-input col">
+            <Form.Label>Artist Name</Form.Label>
+            <Form.Control
               optional="true"
-              type="text"
-              displaytext={artistURLText}
+              type="url"
+              placeholder={artistURLText}
               name="artistImg"
               onChange={onChangeArtist}
             />
-            <button
-              type="button"
-              className="btn btn-primary submit"
-              onClick={() => handleArtistSubmit()}
-            >
-              Submit an artist
-            </button>
-          </form>
-          <ToastMessage msg={message} />
-        </>
-      </div>
-    </>
+          </Form.Group>
+        </Form>
+        <Button
+          className="btn btn-primary submit"
+          onClick={() => handleArtistSubmit()}
+        >
+          Submit artist
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -20,10 +20,10 @@ export const isUrlValid = (string) => {
 
 const ArtistCard = ({ artist }) => {
   const { setIsModalOpen } = useContext(ModalPopUpContext);
-  const { currentArtist, setCurrentArtist } = useContext(CurrentArtistContext);
-  const { isViewUpdateOpen, setIsViewUpdateOpen } =
-    useContext(ViewUpdateContext);
+  const { setCurrentArtist } = useContext(CurrentArtistContext);
+  const { setIsViewUpdateOpen } = useContext(ViewUpdateContext);
   const { artistDOB, artistId, artistImg, artistName } = artist;
+  const currentLocation = window.location;
 
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const ArtistCard = ({ artist }) => {
   const handleArtistUpdate = () => {
     window.scrollTo(0, 0);
     setCurrentArtist(artist);
-    setIsViewUpdateOpen((current) => !current);
+    setIsViewUpdateOpen(true);
   };
 
   const handleArtistDelete = () => {
@@ -48,6 +48,7 @@ const ArtistCard = ({ artist }) => {
         .delete(deleteURL)
         .then((response) => {
           window.alert(response.data.message);
+          currentLocation.reload();
         })
         .catch((error) => {
           window.alert(error.message + " CODE: " + error.code);

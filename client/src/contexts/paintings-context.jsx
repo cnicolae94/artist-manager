@@ -23,8 +23,6 @@ export const PaintingsProvider = ({ children }) => {
     return fetchAllPaintings();
   });
 
-  console.log(paintingsList);
-
   return (
     <PaintingsContext.Provider value={{ isLoading, paintingsList }}>
       {children}

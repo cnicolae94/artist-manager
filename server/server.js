@@ -292,3 +292,43 @@ app.get("/search-paintings", async (req, res) => {
 });
 
 app.listen(PORT);
+
+
+{/* <>
+<h1 className="create-header">{createText}</h1>
+<div className="create-item-wrapper">
+  <>
+    <form className="input-group">
+      <FormInput
+        required
+        type="text"
+        displaytext={artistNameText}
+        name="artistName"
+        onChange={onChangeArtist}
+      />
+      <FormInput
+        required
+        type="number"
+        displaytext={artistDOBText}
+        name="artistDOB"
+        onChange={onChangeArtist}
+      />
+      <FormInput
+        optional="true"
+        type="text"
+        displaytext={artistURLText}
+        name="artistImg"
+        onChange={onChangeArtist}
+      />
+      <button
+        type="button"
+        className="btn btn-primary submit"
+        onClick={() => handleArtistSubmit()}
+      >
+        Submit an artist
+      </button>
+    </form>
+    
+  </>
+</div>
+</> */}

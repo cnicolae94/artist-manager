@@ -21,3 +21,17 @@
   font-weight: normal;
   display: table-cell;
 }
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-search-1 {
+  margin: 10px !important;
+  max-width: 200px;
+}
+.btn-search-2 {
+  margin: 10px !important;
+  max-width: 200px;
+}
