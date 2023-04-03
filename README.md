@@ -16,8 +16,12 @@
 
 [Punctaj din oficiu] - 10%
 
-Nota student: video-ul de prezentare este sau va fi incarcat si el pe github - in cazul in care exista probleme, puteti sa il vedeti si pe youtube, aici: https://youtu.be/HG3-bd05IWc
+Nota student: video-ul de prezentare este sau va fi incarcat si el pe github - in cazul in care exista probleme, puteti sa il vedeti si pe youtube, aici: https://youtu.be/HG3-bd05IWc  -- si back-endul pt ca am uitat sa il prezint in video-ul original https://youtu.be/exHwQGlINd4
 Pentru orice intrebari, curiozitati va rog sa ma contactati pe email-ul universitar.
+
+-Mentiune -> Datorita faptului ca serverul ruleaza local, rularea aplicatiei va fi ingreunata, asadar am incercat sa documentez totul video, astfel incat sa puteti compara cu codul scris. 
+
+MULTUMESC.
 
 
 # Instructions and considerations
